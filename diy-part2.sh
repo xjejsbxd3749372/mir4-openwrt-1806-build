@@ -10,8 +10,8 @@ mkdir -p package/mtk
 cp -r /tmp/yuosother/mt/* package/mtk/
 rm -rf /tmp/yuosother
 
-# 2a) 删 19.07+ 新栈目录:mtwifi-cfg 依赖 wifi-dats/datconf-lua,18.06 feed 没有这些包
-rm -rf package/mtk/mtwifi-cfg package/mtk/datconf package/mtk/regs
+# 2a) 删 19.07+ 新栈目录(依赖 wifi-dats/datconf-lua/mtwifi-cfg,18.06 均不存在)
+rm -rf package/mtk/mtwifi-cfg package/mtk/datconf package/mtk/regs package/mtk/luci-app-mtk package/mtk/luci-app-mtwifi-cfg
 
 # 2b) 删 ImmortalWrt 自带的 emortal/luci-app-mtwifi(依赖不存在的 kmod-mt_wifi);
 #     改用 yuos 的 mt/luci-app-mtwifi(依赖 +mt_wifi,与拷入的配置包匹配)
