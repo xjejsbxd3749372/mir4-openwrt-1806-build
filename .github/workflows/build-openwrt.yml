@@ -63,8 +63,10 @@ jobs:
 
     - name: Load custom config
       run: |
-        [ -e $DIY_P2_SH ] && cd openwrt && $GITHUB_WORKSPACE/$DIY_P2_SH
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+        [ -e $GITHUB_WORKSPACE/$CONFIG_FILE ] && cp $GITHUB_WORKSPACE/$CONFIG_FILE .config
+        make defconfig
 
     - name: SSH remote debugging
       if: github.event.inputs.ssh == 'true'
