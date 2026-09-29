@@ -76,6 +76,11 @@ jobs:
     - name: Downloading packages
       run: cd openwrt && make -j$(nproc) download -i || true
 
+    - name: Verify prebuilt xray artifact reachable
+      run: |
+        curl -fsSL -o /tmp/xray.zip https://github.com/XTLS/Xray-core/releases/download/v26.9.9/Xray-linux-mips32le.zip
+        echo "e572d2cdd819318383460443140898e6117e8e0da5f0c359b25f6c890b8d81a2  /tmp/xray.zip" | sha256sum -c -
+
     - name: Build firmware
       id: compile
       run: |
