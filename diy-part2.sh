@@ -21,6 +21,9 @@ for f in $(find feeds -path '*xray-core/Makefile' 2>/dev/null); do
   echo "removing feed xray-core: $f"
   rm -rf "$(dirname $f)"
 done
-ls package/xray-core
+# 把本仓库的预编译包拷进 openwrt 树(package/ 不会被自动扫描)
+mkdir -p package/xray-core
+cp -f $GITHUB_WORKSPACE/package/xray-core/Makefile package/xray-core/Makefile
+ls -la package/xray-core
 
 echo "diy-part2 done"
